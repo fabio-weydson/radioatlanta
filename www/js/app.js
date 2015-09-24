@@ -272,7 +272,7 @@
                 $('.descurtir').addClass('active');
                 window.plugins.toast.show('Descurtido. Obrigado pelo seu voto!', 'long', 'center', null, null);
             }
-            var jqxhr = $.get( "http://179.188.17.9/~fmgazetacom/player/curtir_app.php?voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
+            var jqxhr = $.get( "#/~fmgazetacom/player/curtir_app.php?voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
                 window.localStorage.setItem('curtido', $scope.Base64($scope.radioOptions.songTitle));
             })
             } else {
@@ -297,7 +297,7 @@
                 var URLCurrentSong = 'http://localhost/aplicativos/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
                 $scope.URLNextSong = 'http://localhost/aplicativos/next_song.php?v=' + n;
             } else {
-                var URLCurrentSong = 'http://179.188.17.9/~fmgazetacom/player/current_song.php?v=' + n;
+                var URLCurrentSong = 'http://179.188.17.9/~fmgazetacom/player/shoutcast.php?v=' + n;
                 $scope.URLNextSong = 'http://179.188.17.9/~fmgazetacom/player/next_song.php?v=' + n;
             }
             if($scope.BuscaAjax==true) {
@@ -434,13 +434,13 @@
         $scope.shareMusica = function() {
             var subject = 'Radio ' + $scope.radioOptions.Titulo;
             if($scope.radioOptions.songTitle) {
-               var message = 'Estou ouvindo ' + $scope.radioOptions.songTitle + " Via App ofical Rede Gazeta MT #redegazeta";
+               var message = 'Estou ouvindo ' + $scope.radioOptions.songTitle + " Via App oficial da Web Radio Atlanta #radioatlanta";
             } else {
-               var message = 'Estou ouvindo ' + $scope.radioOptions.Titulo + " Via App ofical da Rede Gazeta MT #redegazeta";
+               var message = 'Estou ouvindo ' + $scope.radioOptions.Titulo + " Via App oficial da Web Radio Atlanta #radioatlanta";
             }
-            var imagem = 'http://i.imgur.com/jsHElO0.jpg';
+            var imagem = 'http://i.imgur.com/KUEXnFy.png';
             //var imagem = $scope.radioOptions.albumArt;
-            var link = 'http://bit.ly/1LThHb0';
+            var link = 'http://www.radioatlanta.com.br/';
             window.plugins.socialsharing.share(message, subject, imagem, link);
         }
 
@@ -455,7 +455,7 @@
           $('#pedidos .text-input').each(function() {
             dados[$(this).attr('name')] = $(this).val();
         });         
-          $.post("http://fm.gazetadigital.com.br/site/musica.php?acao=enviar", dados , function(response) {
+          $.post("#", dados , function(response) {
               $('#pedidos .form').hide();
               $('#pedidos .enviado').html('<h4>'+dados.nome.split(' ')[0] +', <br/>seu pedido foi enviado com sucesso! Obrigado</h4><ons-button modifier="small">Aguarde...</ons-button>').show();
                $timeout(function(){
