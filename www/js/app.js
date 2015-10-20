@@ -119,8 +119,8 @@
             Musica: 'Aguarde',
             songTitle: '',
             currentTime: '',
-            ProximaArtista: '',
-            ProximaMusica: ''
+            Programa: '',
+            Locutor: ''
         }
         $scope.keywords = ["atlanta","diversos", "chamada", "trilha", "vh", "fm", "ferreto", "break"];
                     
@@ -272,7 +272,7 @@
                 $('.descurtir').addClass('active');
                 window.plugins.toast.show('Descurtido. Obrigado pelo seu voto!', 'long', 'center', null, null);
             }
-            var jqxhr = $.get( "#/~fmgazetacom/player/curtir_app.php?voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
+            var jqxhr = $.get("http://179.188.17.9/~webradios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
                 window.localStorage.setItem('curtido', $scope.Base64($scope.radioOptions.songTitle));
             })
             } else {
@@ -295,10 +295,10 @@
 
             if (document.location.hostname == "localhost") {
                 var URLCurrentSong = 'http://localhost/aplicativos/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
-                $scope.URLNextSong = 'http://localhost/aplicativos/next_song.php?v=' + n;
+                $scope.URLProgramacao = 'http://localhost/aplicativos/radios/programacao.php?id_radio=2&v=' + n;
             } else {
-                var URLCurrentSong = 'http://179.188.17.9/~fmgazetacom/player/shoutcast.php?v=' + n;
-                $scope.URLNextSong = 'http://179.188.17.9/~fmgazetacom/player/next_song.php?v=' + n;
+                var URLCurrentSong = 'http://179.188.17.9/~webradios/shoutcast.php?v=' + n;
+                $scope.URLProgramacao = 'http://179.188.17.9/~webradios/programacao.php?id_radio=2&v=' + n;
             }
             if($scope.BuscaAjax==true) {
             $.get(URLCurrentSong, function(data) {
@@ -365,7 +365,7 @@
                 }
            
             })
-            //$scope.NextFaixa();
+            $scope.Programacao();
             }
         }
         $scope.ExibeBanner = function (){
@@ -391,42 +391,42 @@
                 var dataURL = canvas.toDataURL('image/png');
                 console.log(dataURL);
         }
-        $scope.NextFaixa = function() {
-            var songTitle = '';
-            var Artista = '';
-            var Musica = '';
-            var n = Math.floor(Math.random() * 999) + 1;
+        $scope.Programacao = function() {
+            var Programa = '';
+            var Locutor = '';
+            var d = new Date();
+            var H = d.getHours();
+            var M = d.getMinutes();
+
            if($scope.BuscaAjax==true) {
-            $.get($scope.URLNextSong, function(data) {
+            $.get($scope.URLProgramacao+'&hora='+H+''+M, function(data) {
               
             }).done(function(data) {
-                var faixa = data.split(" - ");
-                if (faixa[1] != undefined) {
-                    Artista = faixa[1];
+                if (data != null) {
+                var programacao = data.split("-");
+                if (programacao[1] != undefined) {
+                    Locutor = programacao[1];
                 }
-                if (faixa[0] != undefined) {
-                    Musica = faixa[0];
+                if (programacao[0] != undefined) {
+                    Programa = programacao[0];
                 }
-
-                songTitle = Artista + ' - ' + Musica;
-                var result = $scope.ExisteTexto(songTitle.toLowerCase(), 
-                $scope.keywords);
-
-                if (result == null) {
                 $scope.$apply(function() {
-                    $scope.radioOptions.ProximaArtista = Artista;
-                    $scope.radioOptions.ProximaMusica = Musica;
+                    $scope.radioOptions.Programa = Programa;
+                    $scope.radioOptions.Locutor = Locutor;
                 });
+                } else {
+                    $scope.radioOptions.Programa = 'Indisponivel';
+                    $scope.radioOptions.Locutor = 'No momento';
                 }
             })
         }
         }
         $scope.RefreshFaixa();
-        //$scope.NextFaixa();
+        $scope.Programacao();
 
         $timeout(function(){
             $scope.RefreshFaixa();
-            //$scope.NextFaixa();
+            $scope.Programacao();
             $interval(function() {
                 $scope.RefreshFaixa();
             }, 40000)
@@ -455,7 +455,7 @@
           $('#pedidos .text-input').each(function() {
             dados[$(this).attr('name')] = $(this).val();
         });         
-          $.post("#", dados , function(response) {
+          $.post("http://179.188.17.9/~webradios/envia_contato.php?id_radio=2", dados , function(response) {
               $('#pedidos .form').hide();
               $('#pedidos .enviado').html('<h4>'+dados.nome.split(' ')[0] +', <br/>seu pedido foi enviado com sucesso! Obrigado</h4><ons-button modifier="small">Aguarde...</ons-button>').show();
                $timeout(function(){
