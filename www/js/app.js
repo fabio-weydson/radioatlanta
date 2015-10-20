@@ -297,7 +297,7 @@
                 var URLCurrentSong = 'http://localhost/aplicativos/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
                 $scope.URLProgramacao = 'http://localhost/aplicativos/radios/programacao.php?id_radio=2&v=' + n;
             } else {
-                var URLCurrentSong = 'http://179.188.17.9/~webradios/shoutcast.php?v=' + n;
+                var URLCurrentSong = 'http://179.188.17.9/~webradios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
                 $scope.URLProgramacao = 'http://179.188.17.9/~webradios/programacao.php?id_radio=2&v=' + n;
             }
             if($scope.BuscaAjax==true) {
