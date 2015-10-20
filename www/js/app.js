@@ -370,7 +370,7 @@
         }
         $scope.ExibeBanner = function (){
             $scope.ExibeFavoritar = false;
-            var b = Math.floor(Math.random() * 1) + 1; 
+            var b = Math.floor(Math.random() * 1) + 1;  
             $scope.radioOptions.Background = false;
             $scope.TMPalbumArt = 'images/banners/'+b+'.jpg';
             $timeout(function(){
