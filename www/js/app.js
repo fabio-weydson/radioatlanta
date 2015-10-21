@@ -103,9 +103,36 @@
         if (!$scope.lastradio) {
             $scope.lastradio = 0;
         }
+
+         $scope.redes_sociais = [{
+            id: '0',
+            title: 'Facebook',
+            icon: 'ion-social-facebook',
+            link: 'https://m.facebook.com/pages/R%C3%A1dio-Atl%C3%A2nta/380366465325855'
+        },
+        {
+            id: '1',
+            title: 'Twitter',
+            icon: 'ion-social-twitter',
+            link: 'https://twitter.com/radioatlanta'
+        },
+        {
+            id: '2',
+            title: 'Instagram',
+            icon: 'ion-social-instagram',
+            link: 'http://instagram.com/radioatlanta'
+        },
+        {
+            id: '3',
+            title: 'WhatsApp',
+            icon: 'ion-social-whatsapp',
+            link: '(65) 9204-4567'
+        }];
+
+
         $scope.radios_arr = [{
             id: '0',
-            title: 'Web Radio Atlanta',
+            title: 'Radio Atlanta',
             menu: 'Atlanta',
             icon: 'ion-ios7-calendar-outline',
             ip: '173.208.235.238:9762'
@@ -182,6 +209,14 @@
                 console.log('diferente');
             }
         });
+
+        $scope.getURL = function(id_rede) {
+            if(id_rede==3) {
+                window.plugins.toast.show($scope.redes_sociais[id_rede].link, 'long', 'center', null, null);
+            } else {
+                window.open($scope.redes_sociais[id_rede].link,'_system');
+            }
+        }
 
         $scope.mudaRadio = function(idRadio) {
 
@@ -434,9 +469,9 @@
         $scope.shareMusica = function() {
             var subject = 'Radio ' + $scope.radioOptions.Titulo;
             if($scope.radioOptions.songTitle) {
-               var message = 'Estou ouvindo ' + $scope.radioOptions.songTitle + " Via App oficial da Web Radio Atlanta #radioatlanta";
+               var message = 'Estou ouvindo ' + $scope.radioOptions.songTitle + " Via App oficial da Radio Atlanta #radioatlanta";
             } else {
-               var message = 'Estou ouvindo ' + $scope.radioOptions.Titulo + " Via App oficial da Web Radio Atlanta #radioatlanta";
+               var message = 'Estou ouvindo ' + $scope.radioOptions.Titulo + " Via App oficial da Radio Atlanta #radioatlanta";
             }
             var imagem = 'http://i.imgur.com/KUEXnFy.png';
             //var imagem = $scope.radioOptions.albumArt;

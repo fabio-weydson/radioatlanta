@@ -93,13 +93,13 @@
     </div>
 
 
-  <!-- <ons-tabbar>
-    <ons-tab ng-click="mudaRadio(item.id);" ng-repeat="(key,item) in radios_arr" ng-attr-active="{{ lastradio == item.id }}">
-      <img ng-src="{{logo}}"><br>
-      <span class="tab-label">{{item.menu}}</span>
+  <ons-tabbar  class="redes">
+    <ons-tab ng-click="getURL(item.id);" ng-repeat="(key,item) in redes_sociais">
+      <i class="{{item.icon}}"></i><br>
+      <span class="tab-label">{{item.title}}</span>
     </ons-tab>
    
-  </ons-tabbar> -->
+  </ons-tabbar> 
 
   <!-- Insert the modal in your index.html -->
   <!-- Change the message to anything you want, this message will be if the user doesn't have any network connection -->
