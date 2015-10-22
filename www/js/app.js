@@ -305,9 +305,11 @@
                 var voto = 'negativo';
                 $('.curtir').removeClass('active');
                 $('.descurtir').addClass('active');
-                window.plugins.toast.show('Descurtido. Obrigado pelo seu voto!', 'long', 'center', null, null);
+               window.plugins.toast.show('Descurtido. Obrigado pelo seu voto!', 'long', 'center', null, null);
             }
+            console.log("http://179.188.17.9/~webradios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle));
             var jqxhr = $.get("http://179.188.17.9/~webradios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
+
                 window.localStorage.setItem('curtido', $scope.Base64($scope.radioOptions.songTitle));
             })
             } else {
