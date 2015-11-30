@@ -151,7 +151,7 @@
         }
         $scope.keywords = ["atlanta","diversos", "chamada", "trilha", "vh", "fm", "ferreto", "break"];
                     
-        $scope.URLCover = 'http://179.188.17.9/~fmgazetacom/player/capa_app.php?artista=';
+        $scope.URLCover = 'http://179.188.17.9/~webradios/player/capa_app.php?artista=';
         $scope.radioOptions.songTitle = '';
         $scope.URLText = '';
         $scope.Status = 'stopped';
