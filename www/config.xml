@@ -5,13 +5,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:android = "http://schemas.android.com/apk/res/android"
         id        = "com.atlanta.app"
-        version   = "1.0">
-<!-- <widget xmlns     = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        xmlns:android = "http://schemas.android.com/apk/res/android"
-        id        = "com.phonegap.gazetafm"
-
-        version   = "1.3"> -->
+        version   = "1.1">
     <name>Web Radio Atlanta MT</name>
 
     <description>
@@ -55,7 +49,7 @@
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
     -->
-    <preference name="phonegap-version" value="cli-5.2.0" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
 <!--     <preference name="phonegap-version"       value="3.7.0" /> 
  -->
   <!-- Plugins -->
@@ -65,7 +59,8 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
     <gap:plugin name="cordova-plugin-device" source="npm"/> 
     <gap:plugin name="cordova-plugin-file" source="npm" /> 
-    <gap:plugin name="nl.x-services.plugins.toast"  /> 
+  <gap:plugin name="cordova-plugin-x-socialsharing" source="npm"  />
+<gap:plugin name="cordova-plugin-x-toast" source="npm"  />
     <gap:plugin name="cordova-plugin-device-motion" source="npm"  />
     <gap:plugin name="cordova-plugin-device-orientation" source="npm" />
     <gap:plugin name="cordova-plugin-dialogs" source="npm" />
@@ -76,9 +71,8 @@
     <gap:plugin name="cordova-plugin-network-information" source="npm" /> 
     <gap:plugin name="cordova-plugin-splashscreen" source="npm"  /> 
     <gap:plugin name="cordova-plugin-statusbar" source="npm"  />
-    <gap:plugin name="nl.x-services.plugins.socialsharing" /> 
-    <gap:plugin name="it.witek.cordova.plugin.background-mode" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="cordova-plugin-background-mode" source="npm" />
+    <gap:plugin name="cordova-plugin-geolocation" source="npm"  />
 
 
 <!--       <gap:plugin name="org.apache.cordova.console" />
