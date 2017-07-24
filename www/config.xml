@@ -6,10 +6,10 @@
         xmlns:android = "http://schemas.android.com/apk/res/android"
         id        = "com.atlanta.app"
         version   = "1.1">
-    <name>Web Radio Atlanta MT</name>
+    <name>Rádio Atlanta Sertaneja</name>
 
     <description>
-        App da web radio Atlanta
+        App da Rádio Atlanta Sertaneja de Cuiabá, Mato Grosso.
     </description>
 
     <author href="http://dbgrafics.com.br" email="fabioweydson@gmail.com">
