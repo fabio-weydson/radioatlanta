@@ -151,13 +151,14 @@
         }
         $scope.keywords = ["atlanta","diversos", "chamada", "trilha", "vh", "fm", "ferreto", "break"];
                     
-        $scope.URLCover = 'http://179.188.17.9/~webradios/player/capa_app.php?artista=';
+        //$scope.URLCover = 'http://helloradio.com.br/radios/player/capa_app.php?artista=';
+        $scope.URLCover = 'images/radio/logo_grande.png?v=3';
         $scope.radioOptions.songTitle = '';
         $scope.URLText = '';
         $scope.Status = 'stopped';
         $scope.proximaFaixa = '';
         $scope.atualFaixa = '';
-        $scope.TMPalbumArt = 'images/radio/cover.png?v=3';
+        $scope.TMPalbumArt = 'images/radio/logo_grande.png?v=3';
         $scope.BuscaAjax = false;
 
        
@@ -307,8 +308,8 @@
                 $('.descurtir').addClass('active');
                window.plugins.toast.show('Descurtido. Obrigado pelo seu voto!', 'long', 'center', null, null);
             }
-            console.log("http://179.188.17.9/~webradios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle));
-            var jqxhr = $.get("http://179.188.17.9/~webradios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
+            console.log("http://helloradio.com.br/radios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle));
+            var jqxhr = $.get("http://helloradio.com.br/radios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
 
                 window.localStorage.setItem('curtido', $scope.Base64($scope.radioOptions.songTitle));
             })
@@ -331,11 +332,11 @@
             var largura_capa = $('.capa').width();
 
             if (document.location.hostname == "localhost") {
-                var URLCurrentSong = 'http://localhost/aplicativos/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
-                $scope.URLProgramacao = 'http://localhost/aplicativos/radios/programacao.php?id_radio=2&v=' + n;
+                var URLCurrentSong = 'http://helloradio.com.br/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
+                $scope.URLProgramacao = 'http://helloradio.com.br/radios/programacao.php?id_radio=2&v=' + n;
             } else {
-                var URLCurrentSong = 'http://179.188.17.9/~webradios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
-                $scope.URLProgramacao = 'http://179.188.17.9/~webradios/programacao.php?id_radio=2&v=' + n;
+                var URLCurrentSong = 'http://helloradio.com.br/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
+                $scope.URLProgramacao = 'http://helloradio.com.br/radios/programacao.php?id_radio=2&v=' + n;
             }
             if($scope.BuscaAjax==true) {
             $.get(URLCurrentSong, function(data) {
@@ -492,7 +493,7 @@
           $('#pedidos .text-input').each(function() {
             dados[$(this).attr('name')] = $(this).val();
         });         
-          $.post("http://179.188.17.9/~webradios/envia_contato.php?id_radio=2", dados , function(response) {
+          $.post("http://helloradio.com.br/radios/envia_contato.php?id_radio=2", dados , function(response) {
               $('#pedidos .form').hide();
               $('#pedidos .enviado').html('<h4>'+dados.nome.split(' ')[0] +', <br/>seu pedido foi enviado com sucesso! Obrigado</h4><ons-button modifier="small">Aguarde...</ons-button>').show();
                $timeout(function(){
