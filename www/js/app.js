@@ -395,7 +395,7 @@
                     $scope.$apply(function() {
                         $("span.capa img").error(function() {
                             $scope.radioOptions.Background = false;
-                            $scope.radioOptions.albumArt = 'images/radio/cover.png?v=2';
+                            $scope.radioOptions.albumArt = 'images/radio/logo_grande.png?v=2';
 
                         });
                     });
