@@ -375,16 +375,16 @@
                             $scope.TMPalbumArt = data;
                             });
                         
-                            $timeout(function(){
-                                $('#tmp_capa,.capa .reserva').hide().fadeIn('slow', function(){
-                                    $scope.$apply(function() {
-                                     $scope.radioOptions.albumArt =  data;
-                                    // var target = angular.element(document.querySelector('#capa'));
-                                    // var target2 =  angular.element(document.querySelector('#canvas'));
+                            // $timeout(function(){
+                            //     $('#tmp_capa,.capa .reserva').hide().fadeIn('slow', function(){
+                            //         $scope.$apply(function() {
+                            //          $scope.radioOptions.albumArt =  data;
+                            //         // var target = angular.element(document.querySelector('#capa'));
+                            //         // var target2 =  angular.element(document.querySelector('#canvas'));
                                     
-                                    // stackBoxBlurCanvasRGB(target2, 0, 0, 500, 375, 8, 1);
-                                 });
-                                }).delay(5000).fadeOut('slow')}, 1000);
+                            //         // stackBoxBlurCanvasRGB(target2, 0, 0, 500, 375, 8, 1);
+                            //      });
+                            //     }).delay(5000).fadeOut('slow')}, 1000);
                          });
 
                         //$scope.TMPalbumArt = $sce.trustAsResourceUrl($scope.URLCover+$scope.URLText);
@@ -436,7 +436,7 @@
             var H = d.getHours();
             var M = d.getMinutes();
 
-           if($scope.BuscaAjax==true) {
+           if($scope.BuscaAjax=='truee') {
             $.get($scope.URLProgramacao+'&hora='+H+''+M, function(data) {
               
             }).done(function(data) {
@@ -457,7 +457,10 @@
                     $scope.radioOptions.Locutor = 'No momento';
                 }
             })
-        }
+          } else {
+                    $scope.radioOptions.Programa = 'Indisponivel';
+                    $scope.radioOptions.Locutor = 'No momento';
+                }
         }
         $scope.RefreshFaixa();
         $scope.Programacao();
