@@ -135,7 +135,7 @@
             title: 'Radio Atlanta',
             menu: 'Atlanta',
             icon: 'ion-ios7-calendar-outline',
-            ip: '173.208.235.238:9762'
+            ip: '104.166.70.226:8214'
         }];
 
         $scope.radioOptions = {
@@ -151,13 +151,14 @@
         }
         $scope.keywords = ["atlanta","diversos", "chamada", "trilha", "vh", "fm", "ferreto", "break"];
                     
-        $scope.URLCover = 'http://179.188.17.9/~webradios/player/capa_app.php?artista=';
+        //$scope.URLCover = 'http://helloradio.com.br/radios/player/capa_app.php?artista=';
+        $scope.URLCover = 'images/radio/logo_grande.png?v=3';
         $scope.radioOptions.songTitle = '';
         $scope.URLText = '';
         $scope.Status = 'stopped';
         $scope.proximaFaixa = '';
         $scope.atualFaixa = '';
-        $scope.TMPalbumArt = 'images/radio/cover.png?v=3';
+        $scope.TMPalbumArt = 'images/radio/logo_grande.png?v=3';
         $scope.BuscaAjax = false;
 
        
@@ -307,8 +308,8 @@
                 $('.descurtir').addClass('active');
                window.plugins.toast.show('Descurtido. Obrigado pelo seu voto!', 'long', 'center', null, null);
             }
-            console.log("http://179.188.17.9/~webradios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle));
-            var jqxhr = $.get("http://179.188.17.9/~webradios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
+            console.log("http://helloradio.com.br/radios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle));
+            var jqxhr = $.get("http://helloradio.com.br/radios/curtir_app.php?id_radio=2&voto="+voto+"&musica="+$scope.Base64($scope.radioOptions.songTitle), function(data) {
 
                 window.localStorage.setItem('curtido', $scope.Base64($scope.radioOptions.songTitle));
             })
@@ -331,11 +332,11 @@
             var largura_capa = $('.capa').width();
 
             if (document.location.hostname == "localhost") {
-                var URLCurrentSong = 'http://localhost/aplicativos/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
-                $scope.URLProgramacao = 'http://localhost/aplicativos/radios/programacao.php?id_radio=2&v=' + n;
+                var URLCurrentSong = 'http://helloradio.com.br/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
+                $scope.URLProgramacao = 'http://helloradio.com.br/radios/programacao.php?id_radio=2&v=' + n;
             } else {
-                var URLCurrentSong = 'http://179.188.17.9/~webradios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
-                $scope.URLProgramacao = 'http://179.188.17.9/~webradios/programacao.php?id_radio=2&v=' + n;
+                var URLCurrentSong = 'http://helloradio.com.br/radios/shoutcast.php?ip='+$scope.radios_arr[$scope.lastradio].ip+'&v=' + n;
+                $scope.URLProgramacao = 'http://helloradio.com.br/radios/programacao.php?id_radio=2&v=' + n;
             }
             if($scope.BuscaAjax==true) {
             $.get(URLCurrentSong, function(data) {
@@ -374,16 +375,16 @@
                             $scope.TMPalbumArt = data;
                             });
                         
-                            $timeout(function(){
-                                $('#tmp_capa,.capa .reserva').hide().fadeIn('slow', function(){
-                                    $scope.$apply(function() {
-                                     $scope.radioOptions.albumArt =  data;
-                                    // var target = angular.element(document.querySelector('#capa'));
-                                    // var target2 =  angular.element(document.querySelector('#canvas'));
+                            // $timeout(function(){
+                            //     $('#tmp_capa,.capa .reserva').hide().fadeIn('slow', function(){
+                            //         $scope.$apply(function() {
+                            //          $scope.radioOptions.albumArt =  data;
+                            //         // var target = angular.element(document.querySelector('#capa'));
+                            //         // var target2 =  angular.element(document.querySelector('#canvas'));
                                     
-                                    // stackBoxBlurCanvasRGB(target2, 0, 0, 500, 375, 8, 1);
-                                 });
-                                }).delay(5000).fadeOut('slow')}, 1000);
+                            //         // stackBoxBlurCanvasRGB(target2, 0, 0, 500, 375, 8, 1);
+                            //      });
+                            //     }).delay(5000).fadeOut('slow')}, 1000);
                          });
 
                         //$scope.TMPalbumArt = $sce.trustAsResourceUrl($scope.URLCover+$scope.URLText);
@@ -394,7 +395,7 @@
                     $scope.$apply(function() {
                         $("span.capa img").error(function() {
                             $scope.radioOptions.Background = false;
-                            $scope.radioOptions.albumArt = 'images/radio/cover.png?v=2';
+                            $scope.radioOptions.albumArt = 'images/radio/logo_grande.png?v=2';
 
                         });
                     });
@@ -435,7 +436,7 @@
             var H = d.getHours();
             var M = d.getMinutes();
 
-           if($scope.BuscaAjax==true) {
+           if($scope.BuscaAjax=='truee') {
             $.get($scope.URLProgramacao+'&hora='+H+''+M, function(data) {
               
             }).done(function(data) {
@@ -456,7 +457,10 @@
                     $scope.radioOptions.Locutor = 'No momento';
                 }
             })
-        }
+          } else {
+                    $scope.radioOptions.Programa = 'Indisponivel';
+                    $scope.radioOptions.Locutor = 'No momento';
+                }
         }
         $scope.RefreshFaixa();
         $scope.Programacao();
@@ -492,7 +496,7 @@
           $('#pedidos .text-input').each(function() {
             dados[$(this).attr('name')] = $(this).val();
         });         
-          $.post("http://179.188.17.9/~webradios/envia_contato.php?id_radio=2", dados , function(response) {
+          $.post("http://helloradio.com.br/radios/envia_contato.php?id_radio=2", dados , function(response) {
               $('#pedidos .form').hide();
               $('#pedidos .enviado').html('<h4>'+dados.nome.split(' ')[0] +', <br/>seu pedido foi enviado com sucesso! Obrigado</h4><ons-button modifier="small">Aguarde...</ons-button>').show();
                $timeout(function(){
