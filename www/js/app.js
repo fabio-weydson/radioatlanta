@@ -135,7 +135,7 @@
             title: 'Radio Atlanta',
             menu: 'Atlanta',
             icon: 'ion-ios7-calendar-outline',
-            ip: '104.166.70.226:8214'
+            ip: '143.208.11.104:8064'
         }];
 
         $scope.radioOptions = {
